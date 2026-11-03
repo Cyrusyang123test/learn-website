@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>阿宝姐AI大赛 · 邀你秀出AI技能</title>
+<style>
+  /* ================= 全局 ================= */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", sans-serif;
+    color: #e8ecf5;
+    background-color: #0a0e1a;
+    /* 深空蓝黑 + 光晕渐变（科技感背景） */
+    background-image:
+      radial-gradient(ellipse 75% 45% at 50% -8%, #1b2747 0%, rgba(10,14,26,0) 65%),
+      radial-gradient(ellipse 55% 38% at 88% 22%, #152540 0%, rgba(10,14,26,0) 58%),
+      radial-gradient(ellipse 45% 30% at 8% 62%, #101b33 0%, rgba(10,14,26,0) 55%);
+    line-height: 1.7;
+  }
+
+  /* 内容容器：居中，最大 1200px */
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+  /* 板块通用：上下留白 */
+  section { padding: 90px 0; }
+
+  /* 小标题（eyebrow） */
+  .eyebrow {
+    color: #38bdf8;           /* 电光青蓝 */
+    letter-spacing: 4px;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  /* 大标题 */
+  h2 { font-size: 44px; font-weight: 700; letter-spacing: 2px; }
+  /* 正文 */
+  .lead { color: #a9b4c8; font-size: 18px; max-width: 720px; }
+
+  /* ================= 主视觉 ================= */
+  .hero {
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  .hero .title {
+    font-size: 96px;
+    font-weight: 800;
+    letter-spacing: 6px;
+    line-height: 1.15;
+    /* 青蓝→紫 渐变文字 */
+    background: linear-gradient(120deg, #7dd3fc 0%, #38bdf8 40%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero .subtitle {
+    font-size: 26px;
+    color: #e8ecf5;
+    margin-top: 24px;
+  }
+  .hero .desc { color: #a9b4c8; margin-top: 14px; font-size: 16px; }
+  .hero .btn {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 14px 42px;
+    font-size: 18px;
+    color: #06121f;
+    font-weight: 700;
+    border-radius: 999px;
+    background: linear-gradient(120deg, #38bdf8, #8b5cf6);
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .hero .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(56,189,248,.35); }
+
+  /* ================= 导航 ================= */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: blur(12px);
+    background: rgba(10,14,26,.72);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  nav .logo { font-size: 20px; font-weight: 700; color: #e8ecf5; }
+  nav .logo span { color: #38bdf8; }
+  nav .links { display: flex; gap: 28px; }
+  nav .links a { color: #a9b4c8; text-decoration: none; font-size: 15px; transition: color .2s; }
+  nav .links a:hover { color: #38bdf8; }
+
+  /* ================= 时间线 ================= */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; }
+  .step {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .step .num {
+    font-size: 40px; font-weight: 800;
+    background: linear-gradient(120deg, #38bdf8, #8b5cf6);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .step h3 { margin: 12px 0 8px; font-size: 20px; }
+  .step p { color: #8a94a8; font-size: 14px; }
+
+  /* ================= 奖项卡片 ================= */
+  .awards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .award {
+    background: linear-gradient(160deg, rgba(56,189,248,.10), rgba(139,92,246,.10));
+    border: 1px solid rgba(56,189,248,.25);
+    border-radius: 18px;
+    padding: 40px 30px;
+    text-align: center;
+  }
+  .award .rank { color: #8a94a8; font-size: 15px; }
+  .award h3 {
+    font-size: 34px; margin: 10px 0 14px;
+    background: linear-gradient(120deg, #7dd3fc, #8b5cf6);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .award p { color: #a9b4c8; font-size: 15px; }
+
+  /* ================= 评选标准 ================= */
+  .criteria { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; }
+  .criterion { text-align: center; }
+  .criterion .bar {
+    font-size: 40px; font-weight: 800; color: #38bdf8;
+  }
+  .criterion h3 { margin: 8px 0 6px; font-size: 20px; }
+  .criterion p { color: #8a94a8; font-size: 14px; }
+
+  /* ================= 要求 / 须知 ================= */
+  .rules { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 18px; padding: 40px; margin-top: 40px; }
+  .rules li { color: #a9b4c8; margin: 12px 0; padding-left: 8px; }
+
+  /* ================= 底部 ================= */
+  footer { padding: 50px 0; text-align: center; color: #5c6678; font-size: 14px; border-top: 1px solid rgba(255,255,255,.06); }
+
+  /* 响应式：窄屏时卡片变单列 */
+  @media (max-width: 900px) {
+    .hero .title { font-size: 56px; }
+    h2 { font-size: 32px; }
+    .steps, .awards, .criteria { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- 导航 -->
+  <nav>
+    <div class="wrap">
+      <div class="logo">阿宝姐<span>AI</span>大赛</div>
+      <div class="links">
+        <a href="#intro">大赛介绍</a>
+        <a href="#awards">奖项设置</a>
+        <a href="#flow">竞赛流程</a>
+        <a href="#rule">参赛须知</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 主视觉 -->
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div class="eyebrow">AI 技能竞赛 · 虚拟奖励</div>
+      <h1 class="title">阿宝姐 AI 大赛</h1>
+      <div class="subtitle">邀你秀出 AI 技能 · 赢取荣誉奖励</div>
+      <div class="desc">邀请全体学员参加 AI 技能竞赛，评选优秀学员，给予虚拟奖励</div>
+      <a class="btn" href="#awards">查看奖项 →</a>
+    </div>
+  </header>
+
+  <!-- 引言 / 大赛介绍 -->
+  <section id="intro">
+    <div class="wrap">
+      <div class="eyebrow">Intro</div>
+      <h2>秀出你的 AI 力</h2>
+      <p class="lead" style="margin-top:20px;">
+        无论你是 AI 新手还是进阶玩家，只要你有创意、会用 AI 工具，就能参赛。
+        用 AI 解决真实问题、创作精彩作品，赢取属于你的荣誉与奖励。
+      </p>
+    </div>
+  </section>
+
+  <!-- 竞赛流程 -->
+  <section id="flow">
+    <div class="wrap">
+      <div class="eyebrow">Flow</div>
+      <h2>竞赛流程</h2>
+      <div class="steps">
+        <div class="step"><div class="num">01</div><h3>报名开启</h3><p>填写报名信息，加入竞赛</p></div>
+        <div class="step"><div class="num">02</div><h3>创作提交</h3><p>用 AI 工具完成作品并提交</p></div>
+        <div class="step"><div class="num">03</div><h3>专家评审</h3><p>评审团打分，评选优秀作品</p></div>
+        <div class="step"><div class="num">04</div><h3>结果公布</h3><p>公布获奖名单，颁发虚拟奖励</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 奖项设置 -->
+  <section id="awards">
+    <div class="wrap">
+      <div class="eyebrow">Awards</div>
+      <h2>奖项设置</h2>
+      <p class="lead" style="margin-top:16px;">评选优秀学员，给予虚拟称号与电子证书</p>
+      <div class="awards">
+        <div class="award"><div class="rank">一等奖 · 1名</div><h3>AI 大师</h3><p>虚拟称号 + 电子证书</p></div>
+        <div class="award"><div class="rank">二等奖 · 2名</div><h3>AI 高手</h3><p>虚拟称号 + 电子证书</p></div>
+        <div class="award"><div class="rank">三等奖 · 3名</div><h3>AI 新星</h3><p>虚拟称号 + 电子证书</p></div>
+      </div>
+      <p style="text-align:center; margin-top:28px; color:#8a94a8;">优秀学员若干 · 颁发电子证书</p>
+    </div>
+  </section>
+
+  <!-- 参赛要求 -->
+  <section id="require">
+    <div class="wrap">
+      <div class="eyebrow">Requirement</div>
+      <h2>参赛要求</h2>
+      <div class="rules">
+        <ul style="list-style:none;">
+          <li>· 参赛对象：全体学员</li>
+          <li>· 创作工具：可使用任意 AI 工具（文生图、对话 AI、AI 视频等）</li>
+          <li>· 作品要求：须为原创，能展示 AI 应用能力</li>
+          <li>· 提交形式：作品（图片/链接/视频）+ 简短文字说明</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 评选标准 -->
+  <section id="criteria">
+    <div class="wrap">
+      <div class="eyebrow">Criteria</div>
+      <h2>评选标准</h2>
+      <div class="criteria">
+        <div class="criterion"><div class="bar">30%</div><h3>创意性</h3><p>创意是否新颖独特</p></div>
+        <div class="criterion"><div class="bar">30%</div><h3>AI 应用</h3><p>AI 工具运用是否到位</p></div>
+        <div class="criterion"><div class="bar">20%</div><h3>完成度</h3><p>作品完成质量</p></div>
+        <div class="criterion"><div class="bar">20%</div><h3>展示表达</h3><p>作品的展示与表达</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 参赛须知 -->
+  <section id="rule">
+    <div class="wrap">
+      <div class="eyebrow">Notice</div>
+      <h2>参赛须知</h2>
+      <div class="rules">
+        <ul style="list-style:none;">
+          <li>1. 作品须为原创，不得抄袭或盗用他人作品。</li>
+          <li>2. 参赛作品需使用 AI 工具辅助创作，并保留创作过程。</li>
+          <li>3. 请按要求提交作品及简短说明，逾期未提交视为放弃。</li>
+          <li>4. 奖励为虚拟称号及电子证书，最终解释权归主办方所有。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部 -->
+  <footer>
+    <div class="wrap">阿宝姐AI大赛 · 练习作业 · 奖励均为虚拟</div>
+  </footer>
+
+</body>
+</html>

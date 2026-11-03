@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>百元男装 · 审美驱动的运动品牌</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        ink: '#1C1917',
+        gold: '#A16207',
+        goldsoft: '#C9A86A',
+        paper: '#FAFAF9',
+        stone: '#78716C',
+      },
+      fontFamily: {
+        display: ['Playfair Display', 'serif'],
+        body: ['DM Sans', 'sans-serif'],
+      },
+    },
+  },
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { transition: none; opacity: 1; transform: none; } }
+</style>
+</head>
+<body class="bg-paper text-ink font-body antialiased">
+
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-50 bg-paper/85 backdrop-blur border-b border-ink/10">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="font-display text-2xl tracking-tight">百元男装<span class="text-gold">.</span></a>
+      <div class="hidden md:flex items-center gap-9 text-sm text-ink/60">
+        <a href="#story" class="hover:text-gold transition">品牌故事</a>
+        <a href="#products" class="hover:text-gold transition">产品系列</a>
+        <a href="#craft" class="hover:text-gold transition">设计细节</a>
+        <a href="#stores" class="hover:text-gold transition">线下门店</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="#products" class="hidden md:inline-flex bg-ink text-paper text-sm px-5 py-2.5 rounded-full hover:bg-gold transition">探索系列</a>
+        <button id="menuBtn" class="md:hidden p-2 -mr-2" aria-label="打开菜单" onclick="toggleMenu()">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </nav>
+    <div id="mobileMenu" class="hidden md:hidden border-t border-ink/10 bg-paper">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col text-sm">
+        <a href="#story" class="py-2.5 text-ink/70 hover:text-gold transition" onclick="closeMenu()">品牌故事</a>
+        <a href="#products" class="py-2.5 text-ink/70 hover:text-gold transition" onclick="closeMenu()">产品系列</a>
+        <a href="#craft" class="py-2.5 text-ink/70 hover:text-gold transition" onclick="closeMenu()">设计细节</a>
+        <a href="#stores" class="py-2.5 text-ink/70 hover:text-gold transition" onclick="closeMenu()">线下门店</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-ink text-paper">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 60% at 75% 15%, rgba(201,168,106,.18) 0%, transparent 55%), radial-gradient(ellipse 50% 50% at 15% 85%, rgba(120,113,108,.15) 0%, transparent 55%);"></div>
+    <div class="max-w-6xl mx-auto px-6 pt-28 pb-24 relative">
+      <p class="text-goldsoft tracking-[.35em] uppercase text-xs mb-6">Aesthetic Sportswear · Est. 2026</p>
+      <h1 class="font-display font-600 leading-[1.02] tracking-tight" style="font-size: clamp(4rem, 11vw, 8.5rem);">百元男装</h1>
+      <p class="mt-7 text-2xl md:text-3xl text-paper/85 font-light">审美驱动的运动品牌</p>
+      <p class="mt-4 text-paper/45 max-w-md leading-relaxed">不堆砌，不将就。以克制的设计与考究的版型，重新诠释当代男性的日常着装。</p>
+      <div class="mt-11 flex flex-wrap gap-4">
+        <a href="#products" class="bg-paper text-ink px-8 py-4 rounded-full hover:bg-goldsoft transition">探索产品系列</a>
+        <a href="#stores" class="border border-paper/25 px-8 py-4 rounded-full hover:border-goldsoft hover:text-goldsoft transition">找线下门店</a>
+      </div>
+    </div>
+    <!-- 数据亮点 -->
+    <div class="relative border-t border-paper/10">
+      <div class="max-w-6xl mx-auto px-6 grid grid-cols-3 divide-x divide-paper/10">
+        <div class="py-8 text-center">
+          <p class="font-display text-4xl md:text-5xl text-goldsoft">30+</p>
+          <p class="text-paper/40 text-xs mt-2 tracking-wide">线下门店</p>
+        </div>
+        <div class="py-8 text-center">
+          <p class="font-display text-4xl md:text-5xl text-goldsoft">20+</p>
+          <p class="text-paper/40 text-xs mt-2 tracking-wide">覆盖城市</p>
+        </div>
+        <div class="py-8 text-center">
+          <p class="font-display text-4xl md:text-5xl text-goldsoft">100+</p>
+          <p class="text-paper/40 text-xs mt-2 tracking-wide">在售单品</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 品牌理念 -->
+  <section id="concept" class="py-28">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <p class="text-gold tracking-[.3em] uppercase text-xs">Brand Concept</p>
+        <h2 class="font-display text-5xl md:text-6xl tracking-tight mt-4 leading-tight">审美驱动<br>新锐运动</h2>
+        <p class="mt-7 text-ink/55 leading-loose max-w-md">我们相信，好设计不必昂贵。真正的体面，来自对线条、面料与比例的克制把握。百元男装，做一件经得起时间审视的衣服。</p>
+      </div>
+      <div class="reveal grid grid-cols-2 gap-4">
+        <div class="bg-ink text-paper rounded-2xl p-9 aspect-square flex flex-col justify-end">
+          <p class="font-display text-4xl">审美</p>
+          <p class="text-paper/45 text-xs mt-2 tracking-wide">AESTHETIC FIRST</p>
+        </div>
+        <div class="bg-gold text-paper rounded-2xl p-9 aspect-square flex flex-col justify-end">
+          <p class="font-display text-4xl">运动</p>
+          <p class="text-paper/70 text-xs mt-2 tracking-wide">SPORT SPIRIT</p>
+        </div>
+        <div class="bg-stone text-paper rounded-2xl p-9 aspect-square flex flex-col justify-end">
+          <p class="font-display text-4xl">新锐</p>
+          <p class="text-paper/70 text-xs mt-2 tracking-wide">FRESH &amp; BOLD</p>
+        </div>
+        <div class="bg-paper border border-ink/10 rounded-2xl p-9 aspect-square flex flex-col justify-end">
+          <p class="font-display text-4xl">克制</p>
+          <p class="text-ink/45 text-xs mt-2 tracking-wide">RESTRAINT</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 品牌故事 -->
+  <section id="story" class="py-28 bg-ink text-paper">
+    <div class="max-w-4xl mx-auto px-6 text-center reveal">
+      <p class="text-goldsoft tracking-[.3em] uppercase text-xs">Our Story</p>
+      <h2 class="font-display text-4xl md:text-6xl tracking-tight mt-5 leading-tight">始于审美<br>成于克制</h2>
+      <p class="mt-8 text-paper/55 leading-loose text-lg max-w-2xl mx-auto">百元男装始于一个朴素的信念——好设计不必昂贵。我们以审美为尺，从面料到版型，从剪裁到细节，用克制的方式，做一件经得起时间审视的衣服。运动是它的筋骨，审美是它的灵魂。</p>
+    </div>
+  </section>
+
+  <!-- 产品系列 -->
+  <section id="products" class="py-28 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-end justify-between mb-14">
+        <div>
+          <p class="text-gold tracking-[.3em] uppercase text-xs">Collections</p>
+          <h2 class="font-display text-5xl md:text-6xl tracking-tight mt-4">产品系列</h2>
+        </div>
+        <p class="text-ink/40 hidden md:block text-sm">国内电商 · 线下同步</p>
+      </div>
+      <div class="grid md:grid-cols-4 gap-5">
+        <a href="#" class="reveal group bg-paper border border-ink/10 rounded-2xl p-9 hover:border-gold hover:-translate-y-1 transition">
+          <i data-lucide="wind" class="w-6 h-6 text-gold"></i>
+          <p class="font-display text-2xl mt-7">外套</p>
+          <p class="text-ink/45 text-sm mt-2">JACKETS</p>
+        </a>
+        <a href="#" class="reveal group bg-paper border border-ink/10 rounded-2xl p-9 hover:border-gold hover:-translate-y-1 transition">
+          <i data-lucide="shirt" class="w-6 h-6 text-gold"></i>
+          <p class="font-display text-2xl mt-7">上衣</p>
+          <p class="text-ink/45 text-sm mt-2">TOPS</p>
+        </a>
+        <a href="#" class="reveal group bg-paper border border-ink/10 rounded-2xl p-9 hover:border-gold hover:-translate-y-1 transition">
+          <i data-lucide="layers" class="w-6 h-6 text-gold"></i>
+          <p class="font-display text-2xl mt-7">裤装</p>
+          <p class="text-ink/45 text-sm mt-2">PANTS</p>
+        </a>
+        <a href="#" class="reveal group bg-paper border border-ink/10 rounded-2xl p-9 hover:border-gold hover:-translate-y-1 transition">
+          <i data-lucide="watch" class="w-6 h-6 text-gold"></i>
+          <p class="font-display text-2xl mt-7">配饰</p>
+          <p class="text-ink/45 text-sm mt-2">ACCESSORIES</p>
+        </a>
+      </div>
+
+      <!-- 精选单品 -->
+      <div class="mt-20">
+        <p class="text-gold tracking-[.3em] uppercase text-xs">Featured</p>
+        <h3 class="font-display text-3xl md:text-4xl tracking-tight mt-3">本季精选</h3>
+        <div class="grid md:grid-cols-4 gap-5 mt-10">
+          <a href="#" class="reveal group">
+            <div class="aspect-[3/4] rounded-2xl bg-gradient-to-br from-stone/40 to-stone/20 flex items-end p-6 overflow-hidden">
+              <p class="font-display text-2xl text-ink">轻量冲锋外套</p>
+            </div>
+            <p class="text-ink/50 text-sm mt-3">Windbreaker · 防风轻量</p>
+          </a>
+          <a href="#" class="reveal group">
+            <div class="aspect-[3/4] rounded-2xl bg-gradient-to-br from-gold/40 to-gold/15 flex items-end p-6 overflow-hidden">
+              <p class="font-display text-2xl text-ink">廓形连帽卫衣</p>
+            </div>
+            <p class="text-ink/50 text-sm mt-3">Hoodie · 宽松廓形</p>
+          </a>
+          <a href="#" class="reveal group">
+            <div class="aspect-[3/4] rounded-2xl bg-gradient-to-br from-ink/30 to-ink/10 flex items-end p-6 overflow-hidden">
+              <p class="font-display text-2xl text-ink">机能工装裤</p>
+            </div>
+            <p class="text-ink/50 text-sm mt-3">Cargo · 多袋机能</p>
+          </a>
+          <a href="#" class="reveal group">
+            <div class="aspect-[3/4] rounded-2xl bg-gradient-to-br from-stone/30 to-paper flex items-end p-6 overflow-hidden">
+              <p class="font-display text-2xl text-ink">速干基础 T 恤</p>
+            </div>
+            <p class="text-ink/50 text-sm mt-3">Tee · 亲肤速干</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 设计细节 -->
+  <section id="craft" class="py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14 reveal">
+        <p class="text-gold tracking-[.3em] uppercase text-xs">Craftsmanship</p>
+        <h2 class="font-display text-5xl md:text-6xl tracking-tight mt-4">设计细节</h2>
+        <p class="text-ink/50 mt-5">看得见的用心，藏在每一处细节里。</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="reveal bg-white border border-ink/10 rounded-2xl p-10 hover:border-gold transition">
+          <i data-lucide="feather" class="w-6 h-6 text-gold"></i>
+          <p class="font-display text-2xl mt-6">面料</p>
+          <p class="text-ink/45 text-sm mt-3 leading-relaxed">精选亲肤面料，兼顾质感与穿着体验，让舒适成为基本要求。</p>
+        </div>
+        <div class="reveal bg-white border border-ink/10 rounded-2xl p-10 hover:border-gold transition">
+          <i data-lucide="scissors" class="w-6 h-6 text-gold"></i>
+          <p class="font-display text-2xl mt-6">版型</p>
+          <p class="text-ink/45 text-sm mt-3 leading-relaxed">以运动为灵感的立体剪裁，修饰身形，赋予日常穿着更多可能。</p>
+        </div>
+        <div class="reveal bg-white border border-ink/10 rounded-2xl p-10 hover:border-gold transition">
+          <i data-lucide="sparkles" class="w-6 h-6 text-gold"></i>
+          <p class="font-display text-2xl mt-6">细节</p>
+          <p class="text-ink/45 text-sm mt-3 leading-relaxed">考究的缝线与辅料，经得起近距离打量，也经得起时间。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 用户评价 -->
+  <section id="voices" class="py-28 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14 reveal">
+        <p class="text-gold tracking-[.3em] uppercase text-xs">Voices</p>
+        <h2 class="font-display text-5xl md:text-6xl tracking-tight mt-4">他们说</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <figure class="reveal bg-paper border border-ink/10 rounded-2xl p-9">
+          <div class="flex gap-1 text-gold">★★★★★</div>
+          <blockquote class="text-ink/70 mt-5 leading-relaxed">版型真的在线，这样的剪裁放在这个价位，很难得。</blockquote>
+          <figcaption class="text-ink/40 text-sm mt-5">— 杭州 · 王先生</figcaption>
+        </figure>
+        <figure class="reveal bg-paper border border-ink/10 rounded-2xl p-9">
+          <div class="flex gap-1 text-gold">★★★★★</div>
+          <blockquote class="text-ink/70 mt-5 leading-relaxed">设计感很强，通勤和运动都能穿，衣柜利用率很高。</blockquote>
+          <figcaption class="text-ink/40 text-sm mt-5">— 上海 · 李先生</figcaption>
+        </figure>
+        <figure class="reveal bg-paper border border-ink/10 rounded-2xl p-9">
+          <div class="flex gap-1 text-gold">★★★★★</div>
+          <blockquote class="text-ink/70 mt-5 leading-relaxed">面料舒服，细节处理得很用心，能感受到品牌的态度。</blockquote>
+          <figcaption class="text-ink/40 text-sm mt-5">— 广州 · 陈先生</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 线下门店 -->
+  <section id="stores" class="py-28">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+      <div class="reveal bg-ink text-paper rounded-3xl p-11">
+        <p class="text-goldsoft tracking-[.3em] uppercase text-xs">Offline Stores</p>
+        <h2 class="font-display text-4xl md:text-5xl tracking-tight mt-4">线下门店</h2>
+        <p class="text-paper/45 mt-4 leading-relaxed">线上电商与线下门店，双线呈现同一个审美标准。</p>
+        <div class="mt-9 space-y-6">
+          <div class="flex items-start gap-4">
+            <i data-lucide="map-pin" class="w-5 h-5 text-goldsoft mt-1"></i>
+            <div><p class="font-medium">杭州 · 湖滨银泰店</p><p class="text-paper/40 text-sm mt-1">上城区延安路 1 号</p></div>
+          </div>
+          <div class="flex items-start gap-4">
+            <i data-lucide="map-pin" class="w-5 h-5 text-goldsoft mt-1"></i>
+            <div><p class="font-medium">上海 · 静安大悦城店</p><p class="text-paper/40 text-sm mt-1">静安区西藏北路 198 号</p></div>
+          </div>
+          <div class="flex items-start gap-4">
+            <i data-lucide="map-pin" class="w-5 h-5 text-goldsoft mt-1"></i>
+            <div><p class="font-medium">广州 · 天河城店</p><p class="text-paper/40 text-sm mt-1">天河区天河路 208 号</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="bg-gold text-paper rounded-3xl p-11">
+          <p class="font-display text-4xl tracking-tight">全国 30+ 门店</p>
+          <p class="text-paper/75 mt-3 leading-relaxed">正在把「审美驱动的运动品牌」带到更多城市。</p>
+          <a href="#contact" class="inline-flex items-center gap-2 bg-paper text-ink px-6 py-3.5 rounded-full mt-9 hover:bg-ink hover:text-paper transition">预约到店 <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="py-28 bg-white">
+    <div class="max-w-4xl mx-auto px-6 text-center reveal">
+      <p class="text-gold tracking-[.3em] uppercase text-xs">Join Us</p>
+      <h2 class="font-display text-5xl md:text-6xl tracking-tight mt-4">穿上审美，走出体面</h2>
+      <p class="text-ink/50 mt-5 max-w-lg mx-auto">关注百元男装，第一时间获取上新与门店动态。</p>
+      <div class="mt-11 flex flex-wrap justify-center gap-4">
+        <a href="#" class="bg-ink text-paper px-9 py-4 rounded-full hover:bg-gold transition">进入电商</a>
+        <a href="#" class="border border-ink/15 px-9 py-4 rounded-full hover:border-gold hover:text-gold transition">关注我们</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-ink text-paper py-14">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <p class="font-display text-2xl">百元男装<span class="text-goldsoft">.</span></p>
+      <p class="text-paper/40 text-sm">审美驱动的运动品牌</p>
+      <p class="text-paper/30 text-sm">© 2026 百元男装</p>
+    </div>
+  </footer>
+
+  <!-- 返回顶部 -->
+  <a href="#" class="fixed bottom-6 right-6 bg-ink text-paper w-11 h-11 rounded-full flex items-center justify-center hover:bg-gold transition shadow-lg">
+    <i data-lucide="arrow-up" class="w-5 h-5"></i>
+  </a>
+
+  <script>
+    lucide.createIcons();
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.add('hidden');
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

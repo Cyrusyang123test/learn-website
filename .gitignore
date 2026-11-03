@@ -1,0 +1,13 @@
+# 依赖与构建产物
+node_modules/
+**/.vitepress/cache/
+
+# 本机配置
+.claude/
+
+# 空文件夹（仅含残留 .git 与空 README）
+阿宝姐AI大赛/
+
+# 系统 / 编辑器文件
+.DS_Store
+Thumbs.db
